@@ -1,0 +1,48 @@
+# Material artifact for @hvac/outdoor, the whole outdoor unit.
+# Unit 24K.STEP is the assembly geometry of this package.
+# Fan, fan motor, and compressor keep their own SLDPRT files in their packages.
+
+[assembly]
+package = "@hvac/outdoor"
+part = "OutdoorUnit"
+nominal_capacity_btu_h = 24000
+nominal_cooling_w = 7034
+cad = "Unit 24K.STEP"
+cabinet_mass_kg = 11.2
+
+[[constituent]]
+id = "cabinet"
+sysml_part = "GalvanizedSteelCabinet"
+material = "galvanized steel"
+grade = "DX51D+Z"
+finish = "polyester powder coat"
+role = "outdoor cabinet"
+mass_kg = 8.4
+density_g_cm3 = 7.85
+
+[[constituent]]
+id = "fins"
+sysml_part = "AluminumCondenserFins"
+owner = "CondenserCoil"
+material = "aluminum"
+grade = "AA1100-O"
+role = "condenser fins"
+mass_kg = 1.4
+density_g_cm3 = 2.71
+notes = "18 FPI, 2 rows, face area 0.42 m2"
+
+[[constituent]]
+id = "tubes"
+sysml_part = "CopperCondenserTubes"
+owner = "CondenserCoil"
+material = "copper"
+grade = "C12200"
+role = "condenser circuit"
+mass_kg = 1.4
+density_g_cm3 = 8.94
+tube_od_mm = 7.0
+
+[not_constituents]
+fan_motor = "@hvac/outdoor-fan-motor"
+compressor = "@hvac/outdoor-compressor"
+fan = "@hvac/outdoor-fan via fan-motor, not a direct dependency"

@@ -1,0 +1,9 @@
+[package]
+name = "@hvac/outdoor"
+version = "1.0.0"
+edition = "2026"
+description = "The outdoor package is the whole 24K unit. Geometry is Unit 24K.STEP. It depends on the fan motor and the compressor. The fan is a dependency of the fan motor, not of this unit directly."
+
+[dependencies]
+"@hvac/outdoor-fan-motor" = "@hvac/outdoor-fan-motor@^1.0"
+"@hvac/outdoor-compressor" = "@hvac/outdoor-compressor@^1.0"

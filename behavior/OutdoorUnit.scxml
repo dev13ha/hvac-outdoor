@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  @hvac/outdoor — the whole outdoor unit (Unit 24K.STEP).
+  Direct dependencies: fan motor, then compressor.
+  The fan is started by the fan motor (shaft.torque), not by this chart.
+  Compressor is not started until the fan motor reports running.
+-->
+<scxml xmlns="http://www.w3.org/2005/07/scxml"
+       version="1.0"
+       datamodel="ecmascript"
+       initial="standby"
+       name="OutdoorUnit">
+  <datamodel>
+    <data id="coolCall" expr="false"/>
+  </datamodel>
+
+  <state id="standby">
+    <transition event="cool.call" target="starting_fan"/>
+  </state>
+
+  <state id="starting_fan">
+    <onentry>
+      <assign location="coolCall" expr="true"/>
+      <send event="unit.run_fan"/>
+    </onentry>
+    <transition event="fan_motor.running" target="starting_compressor"/>
+    <transition event="fan_motor.fault" target="fault"/>
+    <transition event="cool.cancel" target="stopping"/>
+  </state>
+
+  <state id="starting_compressor">
+    <onentry>
+      <send event="unit.start_compressor"/>
+    </onentry>
+    <transition event="compressor.running" target="cooling"/>
+    <transition event="compressor.fault" target="fault"/>
+    <transition event="cool.cancel" target="stopping"/>
+  </state>
+
+  <state id="cooling">
+    <transition event="cool.cancel" target="stopping"/>
+    <transition event="fan_motor.fault" target="fault"/>
+    <transition event="compressor.fault" target="fault"/>
+  </state>
+
+  <state id="stopping">
+    <onentry>
+      <assign location="coolCall" expr="false"/>
+      <send event="unit.stop_compressor"/>
+      <send event="unit.stop_fan"/>
+    </onentry>
+    <transition event="compressor.off" target="standby"/>
+  </state>
+
+  <state id="fault">
+    <onentry>
+      <send event="unit.stop_compressor"/>
+      <send event="unit.stop_fan"/>
+    </onentry>
+    <transition event="fault.reset" target="standby"/>
+  </state>
+</scxml>
