@@ -1,0 +1,31 @@
+format = 1
+
+[[package]]
+name = "@hvac/outdoor-compressor"
+version = "1.0.0"
+source = "registry"
+repository = "https://github.com/dev13ha/hvac-outdoor-compressor"
+commit = "dbc1aa16bd8dd0e44d67835702b486501c9f4655"
+tree = "f717849e4140225883836253ab6c573b2359053a"
+manifest_digest = "sha256:d403d5574342ae60106033cb5508c21ae149222b67ef9f90bd1c0191f029a271"
+dependencies = []
+
+[[package]]
+name = "@hvac/outdoor-fan"
+version = "1.0.0"
+source = "registry"
+repository = "https://github.com/dev13ha/hvac-outdoor-fan"
+commit = "6c20eb28e4fd98a8f6414f37d37e41f2db7f9909"
+tree = "c75ea3463d7b517f1e9b00ecc4ca62bb519a4fd3"
+manifest_digest = "sha256:c2ad891c5ffaf53cad4319cbbc048d22c5f70399d44dd488aa90c8de1c72785d"
+dependencies = []
+
+[[package]]
+name = "@hvac/outdoor-fan-motor"
+version = "1.0.0"
+source = "registry"
+repository = "https://github.com/dev13ha/hvac-outdoor-fan-motor"
+commit = "c80f90c6058db0a4659486e59b01f9f4e240927e"
+tree = "5e5a8441befadfc2e1a3089fd683c8972a4a7138"
+manifest_digest = "sha256:47966ccba77853bcf793976ee73fce731ec15911952b6169bcb1e013d46aea09"
+dependencies = ["@hvac/outdoor-fan@1.0.0"]
