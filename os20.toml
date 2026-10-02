@@ -1,12 +1,12 @@
 [package]
-name = "@hvac/outdoor"
+name = "@hvace/outdoor"
 version = "1.0.1"
 edition = "2026"
 description = "The outdoor package is the whole 24K unit. Geometry is Unit 24K.STEP. It depends on the fan motor and the compressor. The fan is a dependency of the fan motor, not of this unit directly."
 
 [dependencies]
-"@hvac/outdoor-fan-motor" = "@hvac/outdoor-fan-motor@^1.0"
-"@hvac/outdoor-compressor" = "@hvac/outdoor-compressor@^1.0"
+"@hvace/outdoor-fan-motor" = "@hvace/outdoor-fan-motor@^1.0"
+"@hvace/outdoor-compressor" = "@hvace/outdoor-compressor@^1.0"
 
 [[artifacts]]
 name = "unit-geometry"
@@ -15,7 +15,7 @@ format = "step"
 
 [artifacts.semantic]
 relation = "core:represents"
-target = "os20:@hvac/outdoor"
+target = "os20:@hvace/outdoor"
 
 [artifacts.source]
 provider = "github"
@@ -30,7 +30,7 @@ format = "sysml"
 
 [artifacts.semantic]
 relation = "core:describes"
-target = "os20:@hvac/outdoor"
+target = "os20:@hvace/outdoor"
 
 [artifacts.source]
 provider = "github"
@@ -45,7 +45,7 @@ format = "scxml"
 
 [artifacts.semantic]
 relation = "core:simulates"
-target = "os20:@hvac/outdoor"
+target = "os20:@hvace/outdoor"
 
 [artifacts.source]
 provider = "github"
@@ -60,7 +60,7 @@ format = "toml"
 
 [artifacts.semantic]
 relation = "core:specifies"
-target = "os20:@hvac/outdoor"
+target = "os20:@hvace/outdoor"
 
 [artifacts.source]
 provider = "github"
